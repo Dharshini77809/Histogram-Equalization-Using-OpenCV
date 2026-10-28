@@ -70,14 +70,58 @@ Display original color image, histogram, enhanced image, and enhanced histogram 
 ## Program
 
 ### Developed By:
-**Name:** ____________________________  
+### Name: Priyadharshini S
 
-### Register No:
-____________________________  
+### Register No: 212225230218
+```
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+img = cv2.imread('parrot.jpg',cv2.IMREAD_GRAYSCALE)
+plt.imshow(img, cmap='gray')
+plt.title('original_image')
+plt.show()
+```
+```
+plt.hist(img.ravel(),256,range = [0, 256]);
+plt.title('Original Image')
+plt.show()
+```
+```
+img_eq = cv2.equalizeHist(img)
+plt.hist(img_eq.ravel(), 256, range = [0, 256]); 
+plt.title('Equalized Histogram')
+```
+```
+plt.imshow(img_eq, cmap='gray')
+plt.title('original image')
+plt.show()
+```
+```
+img = cv2.imread('parrot.jpg', cv2.IMREAD_COLOR)
+img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+img_hsv[:,:,2] = cv2.equalizeHist(img_hsv[:, :, 2])
+img_eq = cv2.cvtColor(img_hsv, cv2.COLOR_HSV2BGR)
+plt.subplot(121); plt.imshow(img[:, :, ::-1]); plt.title('Original Color Image')
+plt.subplot(122); plt.imshow(img_eq[:, :, ::-1]); plt.title('Equalized Image')
+```
+```
+plt.figure(figsize = [12,10])
+plt.subplot(221); plt.imshow(img[:, :, ::-1]); plt.title('Original Color Image')
+plt.subplot(222); plt.imshow(img_eq[:, :, ::-1]); plt.title('Equalized Image')
+plt.subplot(223); plt.hist(img.ravel(),256,range = [0, 256]); plt.title('Original Image')
+plt.subplot(224); plt.hist(img_eq.ravel(),256,range = [0, 256]); plt.title('Histogram Equalized')
+```
 
 ---
 
 ##  Output
+<img width="562" height="317" alt="Screenshot 2026-10-27 091223" src="https://github.com/user-attachments/assets/87692b33-e855-4e71-bbf6-83eec1c8c659" />
+<img width="567" height="416" alt="Screenshot 2026-10-27 091312" src="https://github.com/user-attachments/assets/110eb684-5fe3-40a8-ba27-629793e4abd0" />
+<img width="540" height="325" alt="Screenshot 2026-10-27 091330" src="https://github.com/user-attachments/assets/7e8fc772-491c-4962-87df-620a6c6ef62f" />
+<img width="560" height="192" alt="Screenshot 2026-10-27 091404" src="https://github.com/user-attachments/assets/5a31cdaa-df8d-4fee-89a3-c55dd0701585" />
+<img width="978" height="747" alt="Screenshot 2026-10-27 091445" src="https://github.com/user-attachments/assets/95e5451e-b865-4656-8444-328a1769bfba" />
+
 
 ### Grayscale Histogram Equalization
 
